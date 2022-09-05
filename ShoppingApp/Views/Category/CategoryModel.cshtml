@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ShoppingApp.Models.Concret.Category>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <i class="fa fa-list-alt"></i> Categories
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item"><i class="fa-regular fa-rectangle-list"></i>@item.Name</a>
+        }
+
+
+
+    </div>
+</li>

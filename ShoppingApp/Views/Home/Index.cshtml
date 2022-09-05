@@ -1,0 +1,125 @@
+﻿@model List<ShoppingApp.Models.Concret.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    int count = 0;
+}
+
+<style>
+    .row {
+        box-sizing: border-box;
+        max-height: 269%;
+        max-width: 320%;
+    }
+
+    .modalOne {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 50px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4);
+    }
+
+  
+    .modal-contentOne {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #888;
+        width: 20%;
+    }
+
+    .closeOne {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3 ">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Name
+                                    <a class="text-white float-right"><i class="bi bi-pencil-square "></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        <img src="@Url.Content(@item.Image)" width="100%" alt="image" />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">Description</p>
+                            <p class="card-text">Product price: @item.Price$</p>
+                            <div class="col-md-12">
+                                <div class="card-foooter">
+                                    <p class="card-text">
+                                        <div onclick="showModal ()">
+                                            <a id="myBtn" onclick="addCount()" class="btn btn-success text-white" href="/Basket/UpdateOrAdd?id=@item.Id">Add to Basket </a>
+                                          
+                                        </div>
+                                        
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modalOne">
+            <div class="modal-contentOne">
+                <p>Baskete elave olundu..</p>
+            </div>
+
+        </div>
+    }
+
+
+
+</div>
+<script>
+     function addCount(){
+         @{
+             count = count + 1;
+      }
+    }
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+
+    function showModal() {
+        modal.style.display = "block";
+    };
+
+
+</script>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ShoppingApp.Models.Concret.Order>
+@{
+    ViewBag.Title = "Order";
+}
+
+
+
+<div class="container pb-5">
+    <h2>Siparişler</h2>
+    <hr />
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+
+
+                <th>Order Date</th>
+                <th>Total</th>
+
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+
+                    <td>@item.Date</td>
+                    <td>@item.TotalPrice</td>
+                    <td>
+
+                        @*@Html.ActionLink("Order", "Order", new { id = @item.Id }, new { @class = "btn btn-primary btn-sm" })*@
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <a href="/OrderDetail/OrderDetail?orderId=@item.Id" class="btn btn-primary btn-sm">Show Products</a>
+
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@Html.ActionLink("Back", "Basket", "Basket")

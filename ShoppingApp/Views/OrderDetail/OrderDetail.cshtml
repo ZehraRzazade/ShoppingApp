@@ -1,0 +1,57 @@
+﻿@model List<ShoppingApp.Models.Concret.Dto.ProductOrderDetailDto>
+@{
+    ViewBag.Title = "OrderDetailAdd";
+}
+
+<h2>Order Details</h2>
+
+
+
+
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-md-12">
+
+          
+            <hr />
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>Product Name</th>
+                        <th>Count</th>
+                        <th>Price</th>
+
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Count
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"></td>
+
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Back","Basket","Basket")
+@*<a class="btn btn-outline-success" href="/Order/Order"> Back </a>*@
